@@ -1,0 +1,17 @@
+= new FileInputStream(image);
+psmnt.setBinaryStream(1, (InputStream) fis, (int) (image.length()));
+psmnt.setString(2,image.getName());
+psmnt.executeUpdate(); 3. 
+Retrieve file from db :
+=rs = stmt.executeQuery("SELECT image , image_name FROM tablename ");
+String filename = "";while (rs.next()) {
+filename = rs.getString(2);Blob test = rs.getBlob("image");
+InputStream x = test.getBinaryStream();
+int size = x.available();OutputStream out = new FileOutputStream("c:/"+filename);
+byte b[] = new byte[size];
+x.read(b);
+out.write(b);} .To handle retrieving Image in easy way . 
+you can do below code in steps after line 5
+byte[] image = rs.getBytes("image")
+Image img = Toolkit.getDefaultToolkit().createImage(image);
+ImageIcon icon = new ImageIcon(img); refrence http://usama-saad.blogspot.com/2013/07/how-to-insert-and-retrieve-image-from.html
