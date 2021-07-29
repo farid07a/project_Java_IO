@@ -20,7 +20,12 @@ import java.util.logging.Logger;
  */
 public class BuffredInputStream_ex {
     
-  
+  /*************
+   * BufferStream Class help to create it array of byte for source file 
+   * and write byte from memory to array
+   * memory read and write is fast than Head HardDisk and memory is low fast for CPU like 1000 time 
+   * @throws IOException 
+   */
     
     
     
@@ -33,13 +38,13 @@ public class BuffredInputStream_ex {
         FileOutputStream fos=new FileOutputStream(path+"CopyNew"+fileImg);
         BufferedInputStream bufInpStr;
         
-        bufInpStr = new BufferedInputStream(fin);
-        BufferedOutputStream bfrOutStrm;
+        bufInpStr = new BufferedInputStream(fin); // this class Buffer Create array Of byte by itself and filled its array automticaly
+        BufferedOutputStream bfrOutStrm;          // from the contain input stream 'create array bytes in memory'
         bfrOutStrm = new BufferedOutputStream(fos);
          int x;
-        while ((x=bufInpStr.read())!=-1) {  
+        while ((x=bufInpStr.read())!=-1) {    // read byte by byte from array byte in memory [ ]
             System.out.println(x);
-            bfrOutStrm.write(x);
+            bfrOutStrm.write(x);  // write byte from array byte in array 
    
         }
 
